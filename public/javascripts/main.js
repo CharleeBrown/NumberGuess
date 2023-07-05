@@ -38,7 +38,29 @@ function getSecretNum() {
 	console.log(randHold);
 	return randHold;
 }
+function addToGuess(guess) {
+	var guessedNum = guess.toString();
+	var theGuess = document.getElementsByClassName("guessOne");
+	var holdOne = theGuess[0];
+	var holdTwo = theGuess[1];
+	var holdThree = theGuess[2];
+	var holdFour = theGuess[3];
+	var holdFive = theGuess[4];
+	if (holdOne.value === null || holdOne.value === " ") {
+		holdOne.value = guessedNum;
+	  } else if (holdTwo.value === null || holdTwo.value === "") {
+		holdTwo.value = guessedNum;
+	  } else if (holdThree.value === null || holdThree.value === "") {
+		holdThree.value = guessedNum;
+	  } else if (holdFour.value === null || holdFour.value === "") {
+		holdFour.value = guessedNum;
+	  } else if (holdFive.value === null || holdFive.value === "") {
+		holdFive.value = guessedNum;
+	  } else {
+	  return 0;
+	}
 
+}
 function checkGuess() {
 
 	if(guessCount != guessCountdown || guessCount <guessCountdown){
@@ -68,6 +90,8 @@ function checkGuess() {
     // guessCount: guessCount,
     // posCount: posCount
 	// 	};
+	console.log("HERE\'s the guess");
+	addToGuess(userGuess);
 	console.log(userGuess);
 	console.log(guessCount);
 	document.getElementsByClassName("actualGuess")[0].value = "";

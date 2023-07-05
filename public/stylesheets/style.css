@@ -19,9 +19,12 @@ a {
 }
 
 #centerGuess{
-  margin: auto;
+  width:25%;
+  margin:auto;
   display: block;
   text-align: center;
+  color:white;
+
 }
 
 .guessInput{
@@ -30,4 +33,10 @@ a {
 #numHold{
   font-size:8px;
   visibility: none;
+}
+#centerGuessInput{
+  width:25%;
+  margin:auto;
+  display: block;
+  text-align: center;
 }
