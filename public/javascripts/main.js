@@ -1,51 +1,58 @@
-var guessCount = 0;
-var posCount = 0;
+var guessCount=0;
+
 var userGuess = [];
 const guessCountdown = 5;
 var countHold = 0;
 const randHold = getSecretNum();
 var answered =document.getElementById("actualAnswer");
-//var guessedNum = guess.toString();
+
+console.log(randHold);
 var theGuess = document.getElementsByClassName("guessOne");
+
+
 document.getElementById("centerGuessInput").value = "";
+
+
 for(var i =0; i< theGuess.length; i++){
 	theGuess[i].value = "";
 }
-function GuessMade(){
-	if(countHold =5){
-		return "Game Over";
-	}
-	else{
-		countHold++;
-	}
 
-}
-
+// Generating a random number
 function randMake(max) {
   return Math.floor(Math.random() * max);
 }
 
+
 function getSecretNum() {
 	const arrayAmt = 4;
-	var x = 0;
+	var numberCount = 0;
 	var holdNum;
 	var randHold = [];
 
-	while (x < arrayAmt) {
+	// While the amount of numbers is < 4
+	while (numberCount < arrayAmt) {
+	// Create a random number and assign it to holdNum
 		holdNum = randMake(10);
 
+	//If randHold array already includes the recently created number
     if (randHold.includes(holdNum)) {
+	//Create a new random number
 		holdNum = randMake(11);
     } else {
+	//Otherwise add the original number to the randHold array
 		randHold.push(holdNum);
-		x++;
+
+	//Increase the numberCount.
+		numberCount++;
     }
 	}
-
-	console.log(randHold);
 	return randHold;
 }
+
+
 function addToGuess(guess) {
+	//This checks if any of the inputs are empty.
+	//If they are, the guess goes into the next empty space from the top.
 	var guessedNum = guess.toString();
 	var theGuess = document.getElementsByClassName("guessOne");
 	var holdOne = theGuess[0];
@@ -53,9 +60,14 @@ function addToGuess(guess) {
 	var holdThree = theGuess[2];
 	var holdFour = theGuess[3];
 	var holdFive = theGuess[4];
+
+	//If the first input is empty
 	if (holdOne.value === null || holdOne.value === "") {
+		//Enter the guess
 		holdOne.value = guessedNum;
-	  } else if (holdTwo.value === null || holdTwo.value === "") {
+	  } 
+	  //Repeat for the next four inputs
+	  else if (holdTwo.value === null || holdTwo.value === "") {
 		holdTwo.value = guessedNum;
 	  } else if (holdThree.value === null || holdThree.value === "") {
 		holdThree.value = guessedNum;
@@ -70,41 +82,52 @@ function addToGuess(guess) {
 
 }
 function checkGuess() {
-
-	if(guessCount != guessCountdown ){
-
 	
-	var holds = document.getElementsByClassName("centerGuess")[0].value;
+	//Increase the guess count
+	guessCount++;
 
-	userGuess.push(holds);
+	var correctCount = 0;
+	var posCount = 0;
+	//If the guess count is less than the guessCountdown
+	if(!(guessCount>guessCountdown )){
 	
-	console.log(userGuess.toString());
-	console.log("Rand- " + randHold);
-	let posCount = 0;
+	//The guess attempt is read into the holdGuess variable
+	var holdGuess = document.getElementsByClassName("centerGuess")[0].value;
+	var newHoldGuess = holdGuess.split('').map(Number);
 
-	for (let i = 0; i < userGuess.length; i++) {
-		if (randHold.includes(userGuess[i])) {
-			guessCount += 1;
-		}
-		}
 
+	//The holdGuess variable is pushed into the userGuess array.
+	for(let j=0; j<holdGuess.length; j++) {
+		userGuess.push(newHoldGuess[j]);
+	}
+	console.log(userGuess);
+		for(let j=0; j<userGuess.length; j++){
+			const element = userGuess[j];
+				if(randHold.includes(element,0)) {
+					correctCount += 1;
+						break;
+	}
+}
 	for (let i = 0; i < randHold.length; i++) {
-		if (randHold[i] === userGuess[i]) {
+		for (let x = 0; x < userGuess.length; x++) {
+			if (i == x && randHold[i] === userGuess[x]) {
 			posCount += 1;
-    }
+			break;
+			}
 		}
-	
-	// 	return {
-    // guessCount: guessCount,
-    // posCount: posCount
-	// 	};
-	console.log("HERE\'s the guess");
+		}
+	console.log("HERE\'s the guess - " + userGuess);
 	addToGuess(userGuess);
 	console.log(userGuess);
-	console.log(guessCount);
+	console.log("Guesses:"+correctCount);
+	console.log("Pos Correct:"+posCount)
 	document.getElementsByClassName("centerGuess")[0].value = "";
 	userGuess.length = 0;
-	guessCount++;
+
+		return {
+     correctCount: correctCount,
+     posCount: posCount
+	 	};
 }
 else{
 	console.log("COUNT EXCEEDED");
@@ -120,3 +143,16 @@ else{
 
 }
 
+function checkAnswer(){
+	for (let i = 0; i < userGuess.length; i++) {
+		if (randHold.includes(userGuess[i])) {
+			guessCount += 1;
+		}
+		}
+
+	for (let i = 0; i < randHold.length; i++) {
+		if (randHold[i] === userGuess[i]) {
+			posCount += 1;
+    }
+		}
+}
