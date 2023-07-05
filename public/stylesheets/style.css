@@ -6,3 +6,24 @@ body {
 a {
   color: #00B7FF;
 }
+ input{
+  display: inline-block;
+}
+.container{
+    margin: auto;
+  width: 50%;
+  padding: 10px;
+}
+#guessHolder{
+  margin:auto;
+}
+
+#centerGuess{
+  margin: auto;
+  display: block;
+  text-align: center;
+}
+
+.guessInput{
+  padding-top:20px;
+}
