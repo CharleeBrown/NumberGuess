@@ -64,3 +64,14 @@ margin-top:30px;
   justify-content: flex-start;
   margin-left:-5px; /* Adjust this value to control the distance between the input and button */
 }
+
+#gameOverText{
+visibility: hidden;
+}
+#actualAnswer{
+  width:25%;
+  margin:auto;
+  text-align: center;
+  color:red;
+  font-weight: bold;
+}

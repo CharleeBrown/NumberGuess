@@ -4,6 +4,7 @@ var userGuess = [];
 const guessCountdown = 5;
 var countHold = 0;
 const randHold = getSecretNum();
+var answered =document.getElementById("actualAnswer");
 //var guessedNum = guess.toString();
 var theGuess = document.getElementsByClassName("guessOne");
 document.getElementById("centerGuessInput").value = "";
@@ -63,15 +64,16 @@ function addToGuess(guess) {
 	  } else if (holdFive.value === null || holdFive.value === "") {
 		holdFive.value = guessedNum;
 	  } else {
-	  return 0;
+
+		return 0;
 	}
 
 }
 function checkGuess() {
 
-	if(guessCount != guessCountdown || guessCount <guessCountdown){
+	if(guessCount != guessCountdown ){
 
-	guessCount++;
+	
 	var holds = document.getElementsByClassName("centerGuess")[0].value;
 
 	userGuess.push(holds);
@@ -102,9 +104,17 @@ function checkGuess() {
 	console.log(guessCount);
 	document.getElementsByClassName("centerGuess")[0].value = "";
 	userGuess.length = 0;
+	guessCount++;
 }
 else{
 	console.log("COUNT EXCEEDED");
+
+	answered.value ="ANSWER:" + randHold;
+	
+	if(answered.style.visibility = "hidden"){
+		answered.style.visibility = "visible";
+	}
+	
 }
 
 
