@@ -101,12 +101,14 @@ function checkGuess() {
 		userGuess.push(newHoldGuess[j]);
 	}
 	console.log(userGuess);
-		for(let j=0; j<userGuess.length; j++){
-			const element = userGuess[j];
-				if(randHold.includes(element,0)) {
+		for(let j=0; j<randHold.length; j++){
+			for (let x = 0; x < userGuess.length; x++) {
+				if (randHold[j] === userGuess[x]) {
 					correctCount += 1;
-						break;
+					break;
 	}
+	
+}
 }
 	for (let i = 0; i < randHold.length; i++) {
 		for (let x = 0; x < userGuess.length; x++) {
@@ -117,13 +119,19 @@ function checkGuess() {
 		}
 		}
 	console.log("HERE\'s the guess - " + userGuess);
-	addToGuess(userGuess);
+	addToGuess(userGuess + "  - Number: "+ correctCount + "  Position:" + posCount);
 	console.log(userGuess);
 	console.log("Guesses:"+correctCount);
 	console.log("Pos Correct:"+posCount)
 	document.getElementsByClassName("centerGuess")[0].value = "";
 	userGuess.length = 0;
-
+	if(correctCount == 4 && posCount ==4){
+		console.log("Correct Answer!");
+		if(answered.style.visibility = "hidden"){
+			answered.style.visibility = "visible";
+			answered.style.color = "green";
+		}
+	}
 		return {
      correctCount: correctCount,
      posCount: posCount
@@ -155,4 +163,7 @@ function checkAnswer(){
 			posCount += 1;
     }
 		}
+}
+function mainReset(){
+	location.reload();
 }
