@@ -27,3 +27,7 @@ a {
 .guessInput{
   padding-top:20px;
 }
+#numHold{
+  font-size:8px;
+  visibility: none;
+}
