@@ -6,7 +6,7 @@ var countHold = 0;
 const randHold = getSecretNum();
 var answered =document.getElementById("actualAnswer");
 
-console.log(randHold);
+console.log("The secret number is :" +randHold);
 var theGuess = document.getElementsByClassName("guessOne");
 
 
@@ -63,7 +63,7 @@ function addToGuess(guess) {
 
 	//If the first input is empty
 	if (holdOne.value === null || holdOne.value === "") {
-		//Enter the guess
+		//Enter the guess value into the first input
 		holdOne.value = guessedNum;
 	  } 
 	  //Repeat for the next four inputs
@@ -95,15 +95,18 @@ function checkGuess() {
 	var holdGuess = document.getElementsByClassName("centerGuess")[0].value;
 	var newHoldGuess = holdGuess.split('').map(Number);
 
-
-	//The holdGuess variable is pushed into the userGuess array.
-	for(let j=0; j<holdGuess.length; j++) {
+	//Iterating over the newHoldGuess variable to add it to the userGuess variable
+	for(let j=0; j<newHoldGuess.length; j++) {
 		userGuess.push(newHoldGuess[j]);
 	}
-	console.log(userGuess);
-		for(let j=0; j<randHold.length; j++){
+
+	//Iterating over the answer in the randHold variable
+	for(let j=0; j<randHold.length; j++){
+		//Iterating over the userGuess variable
 			for (let x = 0; x < userGuess.length; x++) {
+			//If a number in the guess is also in the answer
 				if (randHold[j] === userGuess[x]) {
+				//Increase the correct number count
 					correctCount += 1;
 					break;
 	}
@@ -127,6 +130,7 @@ function checkGuess() {
 	userGuess.length = 0;
 	if(correctCount == 4 && posCount ==4){
 		console.log("Correct Answer!");
+		answered.value ="ANSWER:" + randHold;
 		if(answered.style.visibility = "hidden"){
 			answered.style.visibility = "visible";
 			answered.style.color = "green";
@@ -151,19 +155,19 @@ else{
 
 }
 
-function checkAnswer(){
-	for (let i = 0; i < userGuess.length; i++) {
-		if (randHold.includes(userGuess[i])) {
-			guessCount += 1;
-		}
-		}
+// function checkAnswer(){
+// 	for (let i = 0; i < userGuess.length; i++) {
+// 		if (randHold.includes(userGuess[i])) {
+// 			guessCount += 1;
+// 		}
+// 		}
 
-	for (let i = 0; i < randHold.length; i++) {
-		if (randHold[i] === userGuess[i]) {
-			posCount += 1;
-    }
-		}
-}
+// 	for (let i = 0; i < randHold.length; i++) {
+// 		if (randHold[i] === userGuess[i]) {
+// 			posCount += 1;
+//     }
+// 		}
+// }
 function mainReset(){
 	location.reload();
 }
