@@ -1,6 +1,19 @@
 var guessCount = 0;
 var posCount = 0;
 var userGuess = [];
+const guessCountdown = 5;
+var countHold = 0;
+const randHold = getSecretNum();
+function GuessMade(){
+	if(countHold =5){
+		return "Game Over";
+	}
+	else{
+		countHold++;
+	}
+
+}
+
 function randMake(max) {
   return Math.floor(Math.random() * max);
 }
@@ -27,18 +40,16 @@ function getSecretNum() {
 }
 
 function checkGuess() {
-	const randHold = getSecretNum();
-	var holds = document.getElementsByClassName("actualGuess").value;
-	for( var i in holds ){
-	userGuess.push(i.value);
-	}
-	if(userGuess.length <=0){
-		return 0;
-	}
-	else{
-	console.log(userGuess);
+
+	if(guessCount != guessCountdown || guessCount <guessCountdown){
+
+	guessCount++;
+	var holds = document.getElementsByClassName("actualGuess")[0].value;
+
+	userGuess.push(holds);
+	
+	console.log(userGuess.toString());
 	console.log("Rand- " + randHold);
-	let guessCount = 0;
 	let posCount = 0;
 
 	for (let i = 0; i < userGuess.length; i++) {
@@ -52,10 +63,20 @@ function checkGuess() {
 			posCount += 1;
     }
 		}
-		return {
-    guessCount: guessCount,
-    posCount: posCount
-		};
-	}
+	
+	// 	return {
+    // guessCount: guessCount,
+    // posCount: posCount
+	// 	};
+	console.log(userGuess);
+	console.log(guessCount);
+	document.getElementsByClassName("actualGuess")[0].value = "";
+	userGuess.length = 0;
+}
+else{
+	console.log("COUNT EXCEEDED");
+}
+
+
 }
 
