@@ -4,6 +4,12 @@ var userGuess = [];
 const guessCountdown = 5;
 var countHold = 0;
 const randHold = getSecretNum();
+//var guessedNum = guess.toString();
+var theGuess = document.getElementsByClassName("guessOne");
+document.getElementById("centerGuessInput").value = "";
+for(var i =0; i< theGuess.length; i++){
+	theGuess[i].value = "";
+}
 function GuessMade(){
 	if(countHold =5){
 		return "Game Over";
@@ -46,7 +52,7 @@ function addToGuess(guess) {
 	var holdThree = theGuess[2];
 	var holdFour = theGuess[3];
 	var holdFive = theGuess[4];
-	if (holdOne.value === null || holdOne.value === " ") {
+	if (holdOne.value === null || holdOne.value === "") {
 		holdOne.value = guessedNum;
 	  } else if (holdTwo.value === null || holdTwo.value === "") {
 		holdTwo.value = guessedNum;
@@ -66,7 +72,7 @@ function checkGuess() {
 	if(guessCount != guessCountdown || guessCount <guessCountdown){
 
 	guessCount++;
-	var holds = document.getElementsByClassName("actualGuess")[0].value;
+	var holds = document.getElementsByClassName("centerGuess")[0].value;
 
 	userGuess.push(holds);
 	
@@ -94,7 +100,7 @@ function checkGuess() {
 	addToGuess(userGuess);
 	console.log(userGuess);
 	console.log(guessCount);
-	document.getElementsByClassName("actualGuess")[0].value = "";
+	document.getElementsByClassName("centerGuess")[0].value = "";
 	userGuess.length = 0;
 }
 else{
