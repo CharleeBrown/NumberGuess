@@ -156,15 +156,14 @@ else{
 }
 
 function isNumber(evt) {
-    var charCode = evt.keyCode || evt.which;
-    
-    if (charCode < 48 || charCode > 57) {
-        evt.preventDefault(); // Prevent non-numeric characters
-
-        return false;
-    }
-    
-    return true;
+		var charCode = evt.keyCode || evt.which;
+		if ((charCode < 48 || charCode > 57) && // Regular  keys
+		(charCode < 96 || charCode > 105)){ // Numpad keys{
+			evt.preventDefault(); // Prevent non-numeric characters
+			console.log(charCode);
+			return false;
+		}
+		return true;
 }
 
 document.getElementById("centerGuessInput").addEventListener("keydown", isNumber);
