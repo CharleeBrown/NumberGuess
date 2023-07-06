@@ -37,7 +37,7 @@
 
     <div class="row guessHolder">
             <div class="col" id="mainRow">
-              <input maxlength=4 class=" centerGuess" id="centerGuessInput" />
+              <input type="text" maxlength=4 onkeypress="isNumber(event);" class=" centerGuess" id="centerGuessInput" />
             <div class="col-sm">
               <button id="goButton" type="button"  onclick="checkGuess()">Guess</button>     <button id="goButton" type="button"  onclick="mainReset()">Reset</button>
               </div>

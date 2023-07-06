@@ -155,19 +155,20 @@ else{
 
 }
 
-// function checkAnswer(){
-// 	for (let i = 0; i < userGuess.length; i++) {
-// 		if (randHold.includes(userGuess[i])) {
-// 			guessCount += 1;
-// 		}
-// 		}
+function isNumber(evt) {
+    var charCode = evt.keyCode || evt.which;
+    
+    if (charCode < 48 || charCode > 57) {
+        evt.preventDefault(); // Prevent non-numeric characters
 
-// 	for (let i = 0; i < randHold.length; i++) {
-// 		if (randHold[i] === userGuess[i]) {
-// 			posCount += 1;
-//     }
-// 		}
-// }
+        return false;
+    }
+    
+    return true;
+}
+
+document.getElementById("centerGuessInput").addEventListener("keydown", isNumber);
+
 function mainReset(){
 	location.reload();
 }
