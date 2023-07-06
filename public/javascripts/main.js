@@ -6,7 +6,7 @@ var countHold = 0;
 const randHold = getSecretNum();
 var answered =document.getElementById("actualAnswer");
 
-console.log("The secret number is :" +randHold);
+//console.log("The secret number is :" +randHold);
 var theGuess = document.getElementsByClassName("guessOne");
 
 
@@ -121,11 +121,11 @@ function checkGuess() {
 			}
 		}
 		}
-	console.log("HERE\'s the guess - " + userGuess);
+	//console.log("HERE\'s the guess - " + userGuess);
 	addToGuess(userGuess + "  - Number: "+ correctCount + "  Position:" + posCount);
-	console.log(userGuess);
-	console.log("Guesses:"+correctCount);
-	console.log("Pos Correct:"+posCount)
+	// console.log(userGuess);
+	// console.log("Guesses:"+correctCount);
+	// console.log("Pos Correct:"+posCount)
 	document.getElementsByClassName("centerGuess")[0].value = "";
 	userGuess.length = 0;
 	if(correctCount == 4 && posCount ==4){
@@ -157,10 +157,10 @@ else{
 
 function isNumber(evt) {
 		var charCode = evt.keyCode || evt.which;
-		if ((charCode < 48 || charCode > 57) && // Regular  keys
+		if ((charCode < 48 || charCode > 57) && // Top number row
 		(charCode < 96 || charCode > 105)){ // Numpad keys{
 			evt.preventDefault(); // Prevent non-numeric characters
-			console.log(charCode);
+			//console.log(charCode);
 			return false;
 		}
 		return true;
