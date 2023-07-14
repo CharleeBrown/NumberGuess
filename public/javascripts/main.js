@@ -158,7 +158,7 @@ else{
 function isNumber(evt) {
 		var charCode = evt.keyCode || evt.which;
 		if ((charCode < 48 || charCode > 57) && // Top number row
-		(charCode < 96 || charCode > 105)){ // Numpad keys{
+		(charCode != 8) && (charCode < 96 || charCode > 105)){ // Numpad keys{
 			evt.preventDefault(); // Prevent non-numeric characters
 			//console.log(charCode);
 			return false;
