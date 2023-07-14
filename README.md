@@ -1,6 +1,6 @@
 # NumberGuess
 # A logic game where you have to guess the 4-digit number
-![numberGuess](numberGuess.jpb)
+![numberGuess](numberGuess.jpg)
 Live version hosted at https://numberguess.cyclic.app 
 
 To run it:
