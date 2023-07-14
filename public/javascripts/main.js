@@ -9,9 +9,7 @@ var answered =document.getElementById("actualAnswer");
 //console.log("The secret number is :" +randHold);
 var theGuess = document.getElementsByClassName("guessOne");
 
-
 document.getElementById("centerGuessInput").value = "";
-
 
 for(var i =0; i< theGuess.length; i++){
 	theGuess[i].value = "";
@@ -65,32 +63,29 @@ function addToGuess(guess) {
 	if (holdOne.value === null || holdOne.value === "") {
 		//Enter the guess value into the first input
 		holdOne.value = guessedNum;
-	  } 
+		}
 	  //Repeat for the next four inputs
-	  else if (holdTwo.value === null || holdTwo.value === "") {
+		else if (holdTwo.value === null || holdTwo.value === "") {
 		holdTwo.value = guessedNum;
-	  } else if (holdThree.value === null || holdThree.value === "") {
+		} else if (holdThree.value === null || holdThree.value === "") {
 		holdThree.value = guessedNum;
-	  } else if (holdFour.value === null || holdFour.value === "") {
+		} else if (holdFour.value === null || holdFour.value === "") {
 		holdFour.value = guessedNum;
-	  } else if (holdFive.value === null || holdFive.value === "") {
+		} else if (holdFive.value === null || holdFive.value === "") {
 		holdFive.value = guessedNum;
-	  } else {
+		} else {
 
 		return 0;
 	}
 
 }
 function checkGuess() {
-	
 	//Increase the guess count
 	guessCount++;
-
 	var correctCount = 0;
 	var posCount = 0;
 	//If the guess count is less than the guessCountdown
 	if(!(guessCount>guessCountdown )){
-	
 	//The guess attempt is read into the holdGuess variable
 	var holdGuess = document.getElementsByClassName("centerGuess")[0].value;
 	var newHoldGuess = holdGuess.split('').map(Number);
@@ -110,7 +105,6 @@ function checkGuess() {
 					correctCount += 1;
 					break;
 	}
-	
 }
 }
 	for (let i = 0; i < randHold.length; i++) {
@@ -137,19 +131,19 @@ function checkGuess() {
 		}
 	}
 		return {
-     correctCount: correctCount,
-     posCount: posCount
-	 	};
+				correctCount: correctCount,
+				posCount: posCount
+			};
 }
 else{
 	console.log("COUNT EXCEEDED");
 
 	answered.value ="ANSWER:" + randHold;
-	
+
 	if(answered.style.visibility = "hidden"){
 		answered.style.visibility = "visible";
 	}
-	
+
 }
 
 
