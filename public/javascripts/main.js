@@ -3,9 +3,11 @@ var guessCount=0;
 var userGuess = [];
 const guessCountdown = 5;
 var countHold = 0;
-const randHold = getSecretNum();
+var testHold;
+var randHold = getSecretNum();
+console.log("randHold:"+randHold);
 var answered =document.getElementById("actualAnswer");
-
+console.log("testOne:"+testHold)
 //console.log("The secret number is :" +randHold);
 var theGuess = document.getElementsByClassName("guessOne");
 
@@ -163,5 +165,19 @@ function isNumber(evt) {
 document.getElementById("centerGuessInput").addEventListener("keydown", isNumber);
 
 function mainReset(){
-	location.reload();
+
+	var theGuess = document.getElementsByClassName("guessOne");
+
+document.getElementById("centerGuessInput").value = "";
+
+for(var i =0; i< theGuess.length; i++){
+	theGuess[i].value = "";
+}
+randHold = getSecretNum();
+console.log(randHold);
+if(answered.style.visibility = "visible"){
+	answered.style.visibility = "hidden";
+}
+return randHold;
+	//location.reload();
 }
