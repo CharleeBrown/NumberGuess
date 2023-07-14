@@ -167,7 +167,8 @@ document.getElementById("centerGuessInput").addEventListener("keydown", isNumber
 function mainReset(){
 
 	var theGuess = document.getElementsByClassName("guessOne");
-
+	guessCount=0
+	countHold = 0;
 document.getElementById("centerGuessInput").value = "";
 
 for(var i =0; i< theGuess.length; i++){
