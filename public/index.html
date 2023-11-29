@@ -8,42 +8,47 @@
 </head>
 
 <body>
-<div class="jumbotron text-center">
-<h1>NumberGuess</h1>
-<p>Guess the 4-digit number in 5 tries</p>
-</div>
+  <div class="jumbotron text-center">
+    <h1>NumberGuess</h1>
+    <p>Guess the 4-digit number in 5 tries</p>
+  </div>
 
   <div class="container">
-    <div class="col guessHolder">
-      <div class="row" id="gameOverText">
-        <input maxlength = 4 type="text" placeholder="_ _ _ _" id="actualAnswer" class="form-control" />
-    </div>
-            <div class="row">
-                <input maxlength = 4 type="text" placeholder="_ _ _ _" id="centerGuess" class="guessOne form-control" disabled />
-            </div>
+    <div class="guessHolder">
+      <input maxlength=4 type="text" placeholder="_ _ _ _" id="actualAnswer" class="form-control" hidden/>
+      <input maxlength=4 type="text" placeholder="_ _ _ _" id="centerGuess" class="guessOne form-control" disabled />
+      <input maxlength=4 type="text" placeholder="_ _ _ _" id="centerGuess" class="guessOne form-control" disabled />
+      <input maxlength=4 type="text" placeholder="_ _ _ _" id="centerGuess" class="guessOne form-control" disabled />
+      <input maxlength=4 type="text" placeholder="_ _ _ _" id="centerGuess" class="guessOne form-control" disabled />
+      <input maxlength=4 type="text" placeholder="_ _ _ _" id="centerGuess" class="guessOne form-control" disabled />
 
-            <div class="row">
-                <input  maxlength = 4 type="text"  placeholder="_ _ _ _" id="centerGuess" class="guessOne form-control" disabled />
-            </div>
-            <div class="row">
-                <input  maxlength = 4 type="text" placeholder="_ _ _ _" id="centerGuess" class="guessOne form-control"disabled />
-            </div>
-            <div class="row">
-                <input  maxlength = 4 type="text" placeholder="_ _ _ _" id="centerGuess" class="guessOne form-control" disabled />
-            </div>
-            <div class="row">
-                <input  maxlength = 4 type="text" placeholder="_ _ _ _" id="centerGuess" class="guessOne form-control" disabled/>
-            </div>
-    </div>
+      <div class="text-center" id="answerCenter">
+        <input type="text" maxlength=4 onkeypress="isNumber(event);" class="centerGuess" id="centerGuessInput" placeholder="1234"/>
+        <button id="goButton" type="button" onclick="checkGuess()">Guess</button>
+        <button id="goButton" type="button" onclick="mainReset()">Reset</button>
+      </div>
 
-    <div class="row guessHolder">
-            <div class="col" id="mainRow">
-              <input type="text" maxlength=4 onkeypress="isNumber(event);" class=" centerGuess" id="centerGuessInput" />
-            <div class="col-sm">
-              <button id="goButton" type="button"  onclick="checkGuess()">Guess</button>     <button id="goButton" type="button"  onclick="mainReset()">Reset</button>
-              </div>
+      <div class="control-group text-center">
+        <div class="numbers">0</div>
+        <div class="numbers">1</div>
+        <div class="numbers">2</div>
+        <div class="numbers">3</div>
+        <div class="numbers">4</div>
+        </div>
+        <div class="control-group text-center">
+        <div class="numbers">5</div>
+        <div class="numbers">6</div>
+        <div class="numbers">7</div>
+        <div class="numbers">8</div>
+        <div class="numbers">9</div>
+      </div>
+    </div>
   </div>
-  <footer class="text-center" style="margin-top:30px;"> <a style="color:lightskyblue; font-style:italic;"href="https://www.github.com/CharleeBrown"> My Github</a></footer>
+  <footer class="text-center" style="margin-top:30px;">
+    <a style="color:lightskyblue; font-style:italic;" href="https://www.github.com/CharleeBrown">My Github</a>
+  </footer>
 </body>
+
 <script src="./javascripts/main.js"></script>
+
 </html>

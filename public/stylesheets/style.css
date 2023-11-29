@@ -11,7 +11,7 @@ a {
 }
 .container{
     margin: auto;
-  width: 50%;
+  width:100%;
   padding: 10px;
 }
 #guessHolder{
@@ -74,4 +74,39 @@ visibility: hidden;
   text-align: center;
   color:red;
   font-weight: bold;
+}
+
+#numberGroup{
+ margin:auto 0;
+ 
+}
+
+.numbers {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  font-size: 20px;
+  font-weight: bold;
+  border: 1px solid #000;
+  margin: 5px;
+}
+
+/* Apply different background colors to the numbers in each row */
+.control-group .numbers:nth-child(-n+5) {
+  background-color: #f0f0f0; /* Light gray for the first row */
+}
+
+.row .numbers:nth-child(n+6) {
+  background-color: #d3d3d3; /* Slightly darker gray for the second row */
+}
+
+#answerCenter{
+  margin:10px;
+}
+
+.grayed-out {
+  color: gray; /* Change the color to gray or the desired style */
+  pointer-events: none; /* Disable further clicks on grayed-out numbers */
 }
