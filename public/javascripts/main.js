@@ -1,15 +1,11 @@
 let guessCount, countHold = 0;
 let teshHold;
-let userGuess = [];
+var userGuess = [];
 const guessCountdown = 5;
-let randHold = getSecretNum();
+var randHold = getSecretNum();
 
-let answered = document.getElementById("actualAnswer");
-
-let centerInput =document.getElementById("centerGuessInput");
-
-centerInput.addEventListener("keydown", isNumber);
-
+var answered = document.getElementById("actualAnswer");
+document.getElementById("centerGuessInput").addEventListener("keydown", isNumber);
 document.addEventListener("DOMContentLoaded", () => {
     const numberDivs = document.querySelectorAll(".numbers");
 		for (const numberDiv of numberDivs) {
@@ -17,9 +13,9 @@ document.addEventListener("DOMContentLoaded", () => {
 											() => console.log(numberDiv.innerText));
 						// Replace console.log with the action you want to perform
 		}
-});
+  });
 //console.log("The secret number is :" +randHold);
-let theGuess = document.getElementsByClassName("guessOne");
+var theGuess = document.getElementsByClassName("guessOne");
 
 document.getElementById("centerGuessInput").value = "";
 
@@ -32,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 
-for(let i =0; i< theGuess.length; i++){
+for(var i =0; i< theGuess.length; i++){
 	theGuess[i].value = "";
 }
 
@@ -44,9 +40,9 @@ function randMake(max) {
 
 function getSecretNum() {
 	const arrayAmt = 4;
-	let numberCount = 0;
-	let holdNum;
-	let randHold = [];
+	var numberCount = 0;
+	var holdNum;
+	var randHold = [];
 
 	// While the amount of numbers is < 4
 	while (numberCount < arrayAmt) {
@@ -72,13 +68,13 @@ function getSecretNum() {
 function addToGuess(guess) {
 	//This checks if any of the inputs are empty.
 	//If they are, the guess goes into the next empty space from the top.
-	let guessedNum = guess.toString();
-	let theGuess = document.getElementsByClassName("guessOne");
-	let holdOne = theGuess[0];
-	let holdTwo = theGuess[1];
-	let holdThree = theGuess[2];
-	let holdFour = theGuess[3];
-	let holdFive = theGuess[4];
+	var guessedNum = guess.toString();
+	var theGuess = document.getElementsByClassName("guessOne");
+	var holdOne = theGuess[0];
+	var holdTwo = theGuess[1];
+	var holdThree = theGuess[2];
+	var holdFour = theGuess[3];
+	var holdFive = theGuess[4];
 
 	//If the first input is empty
 	if (holdOne.value === null || holdOne.value === "") {
@@ -103,16 +99,16 @@ function addToGuess(guess) {
 function checkGuess() {
 	//Increase the guess count
 	guessCount++;
-	let correctCount = 0;
-	let posCount = 0;
+	var correctCount = 0;
+	var posCount = 0;
 
 	//If the guess count is less than the guessCountdown
 	if(!(guessCount>guessCountdown )){
 
 
 	//The guess attempt is read into the holdGuess variable
-	let holdGuess = document.getElementsByClassName("centerGuess")[0].value;
-	let newHoldGuess = holdGuess.split('').map(Number);
+	var holdGuess = document.getElementsByClassName("centerGuess")[0].value;
+	var newHoldGuess = holdGuess.split('').map(Number);
 
 	//Iterating over the newHoldGuess variable to add it to the userGuess variable
 	for(let j=0; j<newHoldGuess.length; j++) {
@@ -173,7 +169,7 @@ else{
 }
 
 function isNumber(evt) {
-		let charCode = evt.keyCode || evt.which;
+		var charCode = evt.keyCode || evt.which;
 		if ((charCode < 48 || charCode > 57) && // Top number row
 		(charCode != 8) && (charCode < 96 || charCode > 105)){ // Numpad keys{
 			evt.preventDefault(); // Prevent non-numeric characters
@@ -181,7 +177,7 @@ function isNumber(evt) {
 			return false;
 		}
 		else{
-		let guess = document.getElementById("centerGuessInput");
+		var guess = document.getElementById("centerGuessInput");
 		console.log(evt.key);
 		return true;
 		}
@@ -191,12 +187,12 @@ function isNumber(evt) {
 
 function mainReset(){
 
-	let theGuess = document.getElementsByClassName("guessOne");
+	var theGuess = document.getElementsByClassName("guessOne");
 	guessCount=0
 	countHold = 0;
 document.getElementById("centerGuessInput").value = "";
 
-for(let i =0; i< theGuess.length; i++){
+for(var i =0; i< theGuess.length; i++){
 	theGuess[i].value = "";
 }
 randHold = getSecretNum();
