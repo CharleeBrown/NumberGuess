@@ -66,36 +66,21 @@ function getSecretNum() {
 
 
 function addToGuess(guess) {
-	//This checks if any of the inputs are empty.
-	//If they are, the guess goes into the next empty space from the top.
 	var guessedNum = guess.toString();
 	var theGuess = document.getElementsByClassName("guessOne");
-	var holdOne = theGuess[0];
-	var holdTwo = theGuess[1];
-	var holdThree = theGuess[2];
-	var holdFour = theGuess[3];
-	var holdFive = theGuess[4];
-
-	//If the first input is empty
-	if (holdOne.value === null || holdOne.value === "") {
-		//Enter the guess value into the first input
-		holdOne.value = guessedNum;
-		}
-	  //Repeat for the next four inputs
-		else if (holdTwo.value === null || holdTwo.value === "") {
-		holdTwo.value = guessedNum;
-		} else if (holdThree.value === null || holdThree.value === "") {
-		holdThree.value = guessedNum;
-		} else if (holdFour.value === null || holdFour.value === "") {
-		holdFour.value = guessedNum;
-		} else if (holdFive.value === null || holdFive.value === "") {
-		holdFive.value = guessedNum;
-		} else {
-
-		return 0;
+  
+	// Iterate over the input elements with class "guessOne"
+	for (var i = 0; i < theGuess.length; i++) {
+	  // If the input is empty, fill it with the guessed number and return
+	  if (theGuess[i].value === null || theGuess[i].value === "") {
+		theGuess[i].value = guessedNum;
+		return;
+	  }
 	}
-
-}
+  
+	// If all inputs are filled, return 0
+	return 0;
+  }
 function checkGuess() {
 	//Increase the guess count
 	guessCount++;
@@ -142,7 +127,7 @@ function checkGuess() {
 
 	document.getElementsByClassName("centerGuess")[0].value = "";
 	userGuess.length = 0;
-	if(correctCount === 4 && posCount ===4){
+	if(correctCount == 4 && posCount ==4){
 		console.log("Correct Answer!");
 		answered.value ="ANSWER:" + randHold;
 		if(answered.style.visibility = "hidden"){
@@ -156,7 +141,7 @@ function checkGuess() {
 			};
 }
 else{
-	console.log("COUNT EXCEEDED");
+	//console.log("COUNT EXCEEDED");
 
 	answered.value ="ANSWER:" + randHold;
 
@@ -171,21 +156,24 @@ else{
 }
 
 function isNumber(evt) {
-		var charCode = evt.keyCode || evt.which;
-		if ((charCode < 48 || charCode > 57) && // Top number row
-		(charCode != 8) && (charCode < 96 || charCode > 105)){ // Numpad keys{
-			evt.preventDefault(); // Prevent non-numeric characters
-			//console.log(charCode);
-			return false;
-		}
-		else{
-		var guess = document.getElementById("centerGuessInput");
-		console.log(evt.key);
-		return true;
-		}
+	var charCode = evt.keyCode || evt.which;
+	var isNumericKey =
+	  (charCode >= 48 && charCode <= 57) || // Top number row
+	  (charCode >= 96 && charCode <= 105); // Numpad keys
+
+	if (!isNumericKey && charCode !== 8) {
+	  	evt.preventDefault(); // Prevent non-numeric characters
+		return false;
+	}
+	else{
+	// If the input is valid, you may want to do something with it
+	var guess = document.getElementById("centerGuessInput");
+	// console.log(evt.key);
+	return true;
+	}
 }
 
-
+document.getElementById("bod").addEventListener("keydown", isNumber);
 
 function mainReset(){
 
@@ -199,7 +187,7 @@ for(var i =0; i< theGuess.length; i++){
 }
 randHold = getSecretNum();
 
-if(answered.style.visibility = "visible"){
+if(answered.style.visibility === "visible"){
 	answered.style.visibility = "hidden";
 }
 return randHold;
