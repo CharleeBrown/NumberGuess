@@ -124,9 +124,10 @@ function checkGuess() {
 				//Increase the correct number count
 					correctCount += 1;
 					break;
-	}
-}
-}
+				}
+			}
+		}
+
 	for (let i = 0; i < randHold.length; i++) {
 		for (let x = 0; x < userGuess.length; x++) {
 			if (i == x && randHold[i] === userGuess[x]) {
@@ -141,7 +142,7 @@ function checkGuess() {
 
 	document.getElementsByClassName("centerGuess")[0].value = "";
 	userGuess.length = 0;
-	if(correctCount == 4 && posCount ==4){
+	if(correctCount === 4 && posCount ===4){
 		console.log("Correct Answer!");
 		answered.value ="ANSWER:" + randHold;
 		if(answered.style.visibility = "hidden"){
@@ -159,9 +160,10 @@ else{
 
 	answered.value ="ANSWER:" + randHold;
 
-	if(answered.style.visibility = "hidden"){
-		answered.style.visibility = "visible";
-	}
+	if (answered.style.visibility === "hidden") {
+    answered.style.visibility = "visible";
+    answered.style.color = "green";
+}
 
 }
 
