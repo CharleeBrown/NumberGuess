@@ -1,18 +1,18 @@
-let guessCount, countHold = 0;
-let teshHold;
+var guessCount=0;
+
 var userGuess = [];
 const guessCountdown = 5;
+var countHold = 0;
+var testHold;
 var randHold = getSecretNum();
 
 var answered = document.getElementById("actualAnswer");
 document.getElementById("centerGuessInput").addEventListener("keydown", isNumber);
 document.addEventListener("DOMContentLoaded", () => {
     const numberDivs = document.querySelectorAll(".numbers");
-		for (const numberDiv of numberDivs) {
-				numberDiv.addEventListener("click", 
-											() => console.log(numberDiv.innerText));
-						// Replace console.log with the action you want to perform
-		}
+    for (const numberDiv of numberDivs) {
+      numberDiv.addEventListener("click", () => console.log(numberDiv.innerText)); // Replace console.log with the action you want to perform
+    }
   });
 //console.log("The secret number is :" +randHold);
 var theGuess = document.getElementsByClassName("guessOne");
